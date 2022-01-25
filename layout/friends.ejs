@@ -7,9 +7,6 @@
       <% site.data.friends.forEach((group, i) => { %>
         <div class='friends-group'>
           <br>
-          <h2 class='friend-header'>
-            <%- group.group %>
-          </h2>
           <% if (group.description) { %>
             <%- markdown(group.description) %>
           <%} %>
