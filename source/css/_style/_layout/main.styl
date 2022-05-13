@@ -50,6 +50,8 @@
     padding-right: $gap
   if hexo-config('sidebar.position') =='left'
     padding-left: $gap
+    @media screen and (max-width:$device-tablet)
+      padding-left: 0
   &.no_sidebar
     width: 100%
     padding-right: 0

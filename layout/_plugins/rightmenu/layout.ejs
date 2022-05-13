@@ -47,6 +47,12 @@
           <% let copy_cut = __('rightmenu.copy_cut') %>
           <i class='<%= faIcon %> fa-cut fa-fw mR12'></i> <%- trim(copy_cut) %>
         </span>
+        <% if (theme.search.enable) { %>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='searchWord'>
+          <% let search_word = __('rightmenu.search_word') %>
+          <i class='<%= faIcon %> fa-search fa-fw'></i> <%- trim(search_word) %>
+        </span>
+        <% } %>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
           <% let open_in_new_tab = __('rightmenu.open_in_new_tab') %>
           <i class='<%= faIcon %> fa-external-link-square-alt fa-fw mR12'></i> <%- trim(open_in_new_tab) %>
@@ -87,9 +93,9 @@
               <p class='nav music-title fix-cursor-default'></p>
             </li>
             <li class='music ctrl'>
-              <a class='nav icon-only backward fix-cursor-default' onclick='volantis.rightMenu.aplayerBackward()'><i class='<%= faIcon %> fa-step-backward fa-fw '></i></a>
-              <a class='nav icon-only toggle fix-cursor-default' onclick='volantis.rightMenu.aplayerToggle()'><i class='<%= faIcon %> fa-play fa-fw '></i></a>
-              <a class='nav icon-only forward fix-cursor-default' onclick='volantis.rightMenu.aplayerForward()'><i class='<%= faIcon %> fa-step-forward fa-fw '></i></a>
+              <a class='nav icon-only backward fix-cursor-default' href="/" onclick="return false;" title="backward"><i class='<%= faIcon %> fa-step-backward fa-fw'></i></a>
+              <a class='nav icon-only toggle fix-cursor-default' href="/" onclick="return false;" title="toggle"><i class='<%= faIcon %> fa-play fa-fw'></i></a>
+              <a class='nav icon-only forward fix-cursor-default' href="/" onclick="return false;" title="forward"><i class='<%= faIcon %> fa-step-forward fa-fw'></i></a>
             </li>
             <li class='music volume'>
               <div class='nav volume'>
@@ -109,56 +115,5 @@
       <% }) %>
     </ul>
   </div>
-  <script>
-    volantis.rightMenu = {};
-    volantis.rightMenu.faicon = '<%- theme.rightmenu.faicon %>' || 'fa';
-    <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
-      volantis.rightMenu.music = true;
-      volantis.rightMenu.aplayerBackward = () => {
-        event.stopPropagation();
-        if (MainAPlayer.aplayerBackward) {
-          MainAPlayer.aplayerBackward();
-        }
-      }
-      volantis.rightMenu.aplayerToggle = () => {
-        event.stopPropagation();
-        if (MainAPlayer.aplayerToggle) {
-          MainAPlayer.aplayerToggle();
-        }
-      }
-      volantis.rightMenu.aplayerForward = () => {
-        event.stopPropagation();
-        if (MainAPlayer.aplayerForward) {
-          MainAPlayer.aplayerForward();
-        }
-      }
-    <% } %>
-    <% if(theme.rightmenu.print.defaultStyles) { %>
-      volantis.rightMenu.defaultStyles = true;
-    <% } %>
-    <% if(theme.rightmenu.print.js) { %>
-      volantis.rightMenu.printJs = true;
-      volantis.rightMenu.printJsFun = () => {
-        try {
-          <% (theme.rightmenu.print.js || []).forEach(function(item) {  %>
-            <%- item %>
-          <% }) %>
-        } catch (error) {
-          console.error(error);
-        }
-      };
-    <% } %>
-    <% if(theme.rightmenu.customPicUrl.enable) { %>
-      volantis.rightMenu.customPicUrl = true;
-      volantis.rightMenu.picOld = '<%- theme.rightmenu.customPicUrl.old %>';
-      volantis.rightMenu.picNew = '<%- theme.rightmenu.customPicUrl.new %>';
-    <% } %>
-    <% if (theme.plugins.message && !theme.plugins.message.enable) { %>
-      volantis.message = () => {}
-    <% } %>
-    <% if (theme.plugins.aplayer && !theme.plugins.aplayer.enable) { %>
-      volantis.APlayerController = {};
-    <% } %>
-    volantis.js('<%- theme.cdn.map.js.rightMenu %>')
-  </script>
+  <script>volantis.js('<%- theme.cdn.map.js.rightMenu %>')</script>
 <% } %>

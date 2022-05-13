@@ -1,5 +1,10 @@
 // 异步加载的暗黑模式 强制覆盖样式
 
+fa-solid,
+fa-regular,
+fa-duotone,
+fa-light,
+fa-thin,
 fal,
 fad,
 fa,
@@ -11,8 +16,14 @@ img,
 //side
 .widget.blogger .content .social-wrapper a.social:hover
   background: var(--color-card)
+.widget >.content ul.entry a .badge, .widget >.content ul.popular-posts a .badge
+  color: unset !important
 .content
   color: var(--color-p)
+.widget >.content a
+  color: var(--color-p) !important
+  &:hover
+    color: var(--color-list-hl) !important
 .note
   background: var(--color-block) !important
 div.tabs ul.nav-tabs li.tab.active a
@@ -29,7 +40,7 @@ if hexo-config('plugins.code_highlight') == "highlightjs"
     background: var(--color-card) !important
     background-color: var(--color-card) !important
   .highlight figcaption
-    background-color: #21252b
+    background-color: #14161a
   .highlight pre .line, .highlight pre .params
     color: rgba(158, 142, 142, 0.9)
 
@@ -52,6 +63,10 @@ blockquote p
   color: var(--color-text)
   background: #6f6f72
 
+// btn-copy
+.btn-copy:hover
+  background: var(--color-site-body)
+
 if hexo-config('comments.service')=='gitalk'
   .gt-container .gt-header-textarea
     background-color: var(--color-card)
@@ -63,34 +78,6 @@ if hexo-config('comments.service')=='gitalk'
       box-shadow: none
   .gt-container .gt-comment-admin .gt-comment-content
     background-color: var(--color-card)
-
-if hexo-config('comments.service')== 'minivaline' || hexo-config('comments.service')== 'ohhho'
-  // minivaline v6 or ohhho Dark Color
-  .ohhho pre
-    background: var(--color-meta)
-    border: 1px solid var(--color-block)
-  .ohhho .vlist .vcard .vcomment-body .vhead
-    filter: brightness(85%)
-  ////// minivaline v5 Dark Color //////////////
-  // .MiniValine .vpage .more
-  //   background: var(--color-site-bg)
-  // .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before
-  //   background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
-  // .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after
-  //   background: rgba(0,0,0,0.9)
-  // .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre
-  //   background: var(--color-site-bg)
-  //   border: 1px solid var(--color-site-bg)
-  // .MiniValine .vinputs-area .vextra-area .vsmile-icons
-  //   background: transparent
-  // .MiniValine .vlist .vcard .vcomment-body .vhead
-  //   filter: brightness(85%)
-  // .MiniValine .vbtn
-  //   background: var(--color-card)
-  //   &:hover
-  //     background: var(--color-block)
-  // .MiniValine .vpage .more:hover
-  //   background: var(--color-card)
 
 if hexo-config('plugins.aplayer.enable')
   .aplayer
@@ -111,16 +98,8 @@ if hexo-config('plugins.aplayer.enable')
     border-top: 1px solid var(--color-card)
   .aplayer.aplayer-withlist .aplayer-info
     border-bottom: 1px solid var(--color-block)
-
-if hexo-config('comments.service')=='valine'
-  #valine_container button
-    background-color: var(--color-block) !important
-  #valine_container .vcards .vcontent.expand:before
-    background: none !important
-  #valine_container .vcards .vcontent.expand:after
-    background:  #393c40 !important
-  .v[data-class=v] code, .v[data-class=v] pre
-    background-color: #332828 !important
+  .aplayer .aplayer-notice
+    background-color: var(--color-site-bg) !important
 
 if hexo-config('comments.service')=='twikoo'
   .OwO
