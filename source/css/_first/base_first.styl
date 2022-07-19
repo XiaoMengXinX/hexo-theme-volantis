@@ -20,6 +20,7 @@
   --color-meta: $color-meta
   --color-read-bkg: $color-read-bkg
   --color-read-post: $color-read-post
+  --color-copyright-bkg: $color-copyright-bkg
 
 *
   box-sizing: border-box
@@ -105,6 +106,12 @@ button
     background: alpha($color-card, .9) !important
     backdrop-filter: saturate(200%) blur(20px)
 
+if hexo-config('comments.service')=='discuss' || hexo-config('comments.service')=='twikoo' || hexo-config('comments.service')=='waline'
+  .blur#comments
+    @supports (backdrop-filter: blur(20px))
+      backdrop-filter: unset
+  #layoutHelper-comments
+    margin-bottom: 100px
 
 .shadow
   box-shadow: $boxshadow-card
