@@ -3,4 +3,17 @@
   <%- partial('_partial/archive') %>
 </div>
 <%- partial('_partial/side') %>
-
+<div id="sakana-widget"></div>
+<style>
+  #sakana-widget {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: auto;
+  }
+</style>
+<script>
+  function initSakanaWidget() {
+    new SakanaWidget().mount('#sakana-widget');
+  }
+</script>
